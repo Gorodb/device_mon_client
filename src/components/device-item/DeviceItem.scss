@@ -1,0 +1,16 @@
+$primary-color: #333;
+$width: 1000px;
+
+.device-item {
+  text-align: center;
+  width: $width;
+  margin: 0 auto;
+  display: flex;
+  box-sizing: border-box;
+
+  .item {
+    border: 1px solid $primary-color;
+    width: $width / 4;
+    flex-direction: column;
+  }
+}

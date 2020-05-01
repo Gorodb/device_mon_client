@@ -1,0 +1,52 @@
+$primary-color: #333;
+$width: 1000px;
+
+$header: #313A49;
+$evenRow: #f6f8f9;
+$oddRow: #ffffff;
+$hoverRow: #e4e5e8;
+
+.table {
+  .header {
+    background-color: rgba($header, .3);
+
+    .item {
+      padding: 20px 0 20px 0 !important;
+    }
+
+    &:hover {
+      background-color: rgba($header, .4);
+    }
+  }
+
+  .row-item {
+    text-align: center;
+    width: $width;
+    margin: 0 auto;
+    display: flex;
+    box-sizing: border-box;
+
+    .item {
+      border: 1px solid rgba($primary-color, .06);
+      width: $width / 4;
+      flex-direction: column;
+      padding: 10px;
+    }
+  }
+
+  .even-row {
+    background-color: $evenRow;
+
+    &:hover {
+      background-color: $hoverRow;
+    }
+  }
+
+  .odd-row {
+    background-color: $oddRow;
+
+    &:hover {
+      background-color: $hoverRow;
+    }
+  }
+}
