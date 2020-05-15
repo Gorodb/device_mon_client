@@ -1,5 +1,4 @@
 $primary-color: #333;
-$width: 1000px;
 
 $header: #313A49;
 $evenRow: #f6f8f9;
@@ -7,12 +6,11 @@ $oddRow: #ffffff;
 $hoverRow: #e4e5e8;
 
 .table {
+  width: 100%;
+
   .header {
     background-color: rgba($header, .3);
-
-    .item {
-      padding: 20px 0 20px 0 !important;
-    }
+    vertical-align: middle;
 
     &:hover {
       background-color: rgba($header, .4);
@@ -21,16 +19,25 @@ $hoverRow: #e4e5e8;
 
   .row-item {
     text-align: center;
-    width: $width;
     margin: 0 auto;
     display: flex;
     box-sizing: border-box;
 
     .item {
       border: 1px solid rgba($primary-color, .06);
-      width: $width / 4;
       flex-direction: column;
       padding: 10px;
+      min-width: 30px;
+      word-break: break-word;
+      vertical-align: middle;
+
+      &:last-child {
+        border-right: none;
+      }
+
+      &:first-child {
+        border-left: none;
+      }
     }
   }
 

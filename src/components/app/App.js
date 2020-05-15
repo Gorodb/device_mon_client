@@ -14,7 +14,9 @@ const App = ({ devicesService }) => {
                 <Route path="/" exact component={HomePage} />
                 <Route path="/devices" component={DevicesPage} />
             </Switch>
-            <Table />
+            <div style={{margin: '0 auth', width: '1366px'}}>
+                <Table />
+            </div>
         </div>
     )
 }
