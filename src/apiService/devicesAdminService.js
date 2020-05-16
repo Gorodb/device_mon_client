@@ -1,6 +1,6 @@
 import ApiService from "./apiService"
 
-class DeviceService extends ApiService {
+class DeviceAdminService extends ApiService {
     static getDevice (id) {
         return this._getRequest(`/api/v1/admin/devices/${id}`)
     }
@@ -27,4 +27,4 @@ class DeviceService extends ApiService {
     }
 }
 
-export default DeviceService
+export default DeviceAdminService

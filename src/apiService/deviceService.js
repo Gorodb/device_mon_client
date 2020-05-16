@@ -1,21 +1,60 @@
 import ApiService from "./apiService"
 
 class DeviceService extends ApiService {
-    static getDevice (id) {
-        return this._getRequest(`/api/v1/devices/${id}`)
+    static async getDevice (id) {
+        const { data } = await this._getRequest(`/api/v1/devices/${id}`)
+
+        return data
     }
 
-    static getDevices () {
-        return this._getRequest(`/api/v1/devices`)
+    static async getDevices () {
+        const { data } = await this._getRequest(`/api/v1/devices/`)
+
+        return data
     }
 
     static updateDevice (id, device) {
-        return this._putRequest(`/api/v1/devices/${id}`, device)
+        const { data } = this._putRequest(`/api/v1/devices/${id}`, device)
+
+        return data
     }
 
-    static normaliseDevice (data) {
-        const { success, error } = data
-        return { success, error, data: data.data }
+    static normaliseDevice (device) {
+        return {
+            id: device.id,
+            charge: device.charge,
+            defaultLocation: device.default_location,
+            location: device.location,
+            department: device.department,
+            departmentId: device.department_id,
+            deviceType: {
+                deviceType: device.deviceType.device_type,
+                title: device.deviceType.title
+            },
+            name: device.name,
+            osName: device.os_name,
+            userUpdate: device.userUpdate,
+            owner: {
+                id: device.owner.id,
+                name: device.owner.name,
+                email: device.owner.email,
+                phone: device.owner.phone,
+                role: device.owner.role,
+                image: device.owner.image,
+                isEmailConfirmed: device.owner.is_email_confirmed,
+                description: device.owner.description,
+                department_id: device.owner.department_id}
+        }
+    }
+
+    static normaliseDevices ({ error = null, pagination, items }) {
+        if (error) {
+            return error
+        }
+
+        const devices = items.reduce((acc, device) => [...acc, this.normaliseDevice(device)], [])
+
+        return { pagination, items: devices }
     }
 }
 

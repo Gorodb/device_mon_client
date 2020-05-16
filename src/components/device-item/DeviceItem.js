@@ -4,7 +4,7 @@ import './DeviceItem.scss'
 
 const DeviceItem = ({ device }) => {
     const { name, os_name, default_location, location } = device
-    console.log(device)
+
     return (
         <div>
             <div className="device-item header">
