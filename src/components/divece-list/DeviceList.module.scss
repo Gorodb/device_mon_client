@@ -1,0 +1,60 @@
+$primaryColor: #333;
+
+$header: #313A49;
+$evenRow: #f6f6f6;
+$oddRow: #e4e5e8;
+$border: #fafafa;
+
+.devices {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+
+  thead {
+    background-color: rgba($header, .2);
+    display: table-header-group;
+
+    &:hover {
+      background-color: rgba($header, .4);
+    }
+  }
+
+  th {
+    text-align: left;
+  }
+
+  td, th {
+    padding: 10px;
+    color: $primaryColor;
+
+    &:not(last-child) {
+      border-right: 1px dotted $border;
+    }
+
+    a {
+      text-decoration: none;
+      color: $primaryColor;
+    }
+  }
+
+  .even-row {
+    background-color: rgba($evenRow, .5);
+
+    &:hover {
+      background-color: rgba($evenRow, 1);
+    }
+  }
+
+  .odd-row {
+    background-color: rgba($oddRow, .5);
+
+    &:hover {
+      background-color: rgba($oddRow, 1);
+    }
+  }
+}

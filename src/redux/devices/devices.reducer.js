@@ -3,61 +3,61 @@ import { DevicesActionTypes } from "./devices.types"
 const {
     FETCH_DEVICES_REQUEST,
     FETCH_DEVICES_SUCCESS,
-    FETCH_DEVICES_FAILURE
+    FETCH_DEVICES_FAILURE,
+    FETCH_DEVICE_REQUEST,
+    FETCH_DEVICE_SUCCESS,
+    FETCH_DEVICE_FAILURE
 } = DevicesActionTypes
 
 const initialState = {
     loading: true,
-    devices: [{
-        "id": 2,
-        "name": "Samsung A10",
-        "os_name": "Android 8.1",
-        "default_location": "Зал в Питере",
-        "location": "Зал в Питере",
-        "charge": null,
-        "department_id": 1,
-        "department": {
-            "name": "Ульяновск",
-            "description": "Ульяновский офис"
-        },
-        "owner": {
-            "id": 3,
-            "name": "Рамис",
-            "email": "vakazov@restream.rt.ru",
-            "phone": "+79084856987",
-            "role": "admin",
-            "image": "no-image",
-            "is_email_confirmed": true,
-            "description": "Я нахожусь в Питере, так что, если телефон лежит у меня, то попробуйте заберите",
-            "department_id": 1
-        },
-        "userUpdate": null,
-        "deviceType": {
-            "device_type": "tablet",
-            "title": "планшет"
-        }
-    }],
+    devices: [],
     error: null,
-    device: null,
-    currentDevice: null
+    device: {},
+    currentDevice: {}
 }
 
 const updateDevices = (state, action) => {
     switch (action.type) {
         case FETCH_DEVICES_REQUEST:
             return {
+                ...state,
                 loading: true,
-                error: null
+                error: null,
+                devices: [],
             }
         case FETCH_DEVICES_SUCCESS:
             return {
+                ...state,
                 devices: action.payload,
                 loading: false,
                 error: null
             }
         case FETCH_DEVICES_FAILURE:
             return {
+                ...state,
                 devices: [],
+                loading: false,
+                error: action.payload
+            }
+        case FETCH_DEVICE_REQUEST:
+            return {
+                ...state,
+                loading: true,
+                error: null,
+                device: {},
+            }
+        case FETCH_DEVICE_SUCCESS:
+            return {
+                ...state,
+                device: action.payload,
+                loading: false,
+                error: null
+            }
+        case FETCH_DEVICE_FAILURE:
+            return {
+                ...state,
+                device: {},
                 loading: false,
                 error: action.payload
             }

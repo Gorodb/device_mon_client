@@ -3,8 +3,7 @@ import https from "https"
 
 const axios = Axios.create({
     httpsAgent: new https.Agent({
-        rejectUnauthorized: false,
-        department: 1
+        rejectUnauthorized: false
     })
 })
 

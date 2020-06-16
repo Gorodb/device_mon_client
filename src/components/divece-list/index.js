@@ -1,3 +1,3 @@
-import DeviceList from "./DeviceList"
+import DeviceList from "./DeviceList.container"
 
 export default DeviceList
